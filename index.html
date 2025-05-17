@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Audio va Savollar</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      display: flex;
+      height: 100vh;
+    }
+
+    .left, .right {
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .left {
+      width: 50%;
+      background-color: #f2f2f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .right {
+      width: 50%;
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .controls button {
+      padding: 5px 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #questions {
+      flex: 1;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      padding: 10px;
+      font-size: 16px;
+      transition: font-size 0.2s;
+    }
+
+    .question {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="left">
+    <audio controls>
+      <source src="your-audio-file.mp3" type="audio/mpeg" />
+      Brauzeringiz audio pleerni qo‘llab-quvvatlamaydi.
+    </audio>
+  </div>
+
+  <div class="right">
+    <div class="controls">
+      <button onclick="zoomIn()">A+</button>
+      <button onclick="zoomOut()">A−</button>
+    </div>
+    <div id="questions">
+      <div class="question">1. Ushbu audioda qaysi mavzu muhokama qilinmoqda?</div>
+      <div class="question">2. Gapirayotgan shaxs kim va u nima deydi?</div>
+      <div class="question">3. Siz eshitgan asosiy fikr nima?</div>
+      <div class="question">4. Audioda nechta asosiy nuqta tilga olinadi?</div>
+      <div class="question">5. Ushbu audio sizda qanday taassurot qoldirdi?</div>
+    </div>
+  </div>
+
+  <script>
+    let fontSize = 16;
+    const questionsDiv = document.getElementById("questions");
+
+    function zoomIn() {
+      fontSize += 2;
+      questionsDiv.style.fontSize = fontSize + "px";
+    }
+
+    function zoomOut() {
+      if (fontSize > 10) {
+        fontSize -= 2;
+        questionsDiv.style.fontSize = fontSize + "px";
+      }
+    }
+  </script>
+
+</body>
+</html>
